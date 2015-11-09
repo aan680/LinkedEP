@@ -1,0 +1,3 @@
+/* RDF Database is in use */
+
+locked([time(1446658901),pid(739),host('astrids-macbook-pro.local')]).

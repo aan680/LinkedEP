@@ -1,0 +1,14 @@
+/* Generated file
+   Keep track of installed config files
+*/
+
+file('debug.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('config.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('store.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('network.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('zlib.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('pengines.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('localhost.pl','/Users/Astrid/ClioPatria/ClioPatria/config-available',1445865500).
+file('skos.pl','cpack/skos/config-available',1445865725).
+file('xmlrdf.pl','cpack/xmlrdf/config-available',1445865726).
+file('swish.pl','cpack/swish/config-available',1445866953).

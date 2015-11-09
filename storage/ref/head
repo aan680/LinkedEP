@@ -1,0 +1,9 @@
+epoch(1445867242).
+
+head('explore.swinb',-,'63eeb98199ce764d27a611969f0122661d62abb0').
+head('explore.swinb','63eeb98199ce764d27a611969f0122661d62abb0',a1929ef51af59288659b2227b7c1236198668d8c).
+head('explore.swinb',a1929ef51af59288659b2227b7c1236198668d8c,'36559494af1e5c2b1b51ca8abd2eef10f4132ff0').
+head('XMLtoRDF_tryout.pl',-,c58b7998ef9ea17ee36bb0ef7d961d255ac22b54).
+head('XMLtoRDF_tryout.pl',c58b7998ef9ea17ee36bb0ef7d961d255ac22b54,f30f2127f1df0204939c2b4beabf9c092b7b8585).
+head('XMLtoRDF_tryout.pl',f30f2127f1df0204939c2b4beabf9c092b7b8585,'6f35abefd6b8f2e283bc7266f373888e61d8a94b').
+head('XMLtoRDF_langparse.pl',-,'47ebac86c6a2f5e4a964899a15fb82c8c36f24d9').

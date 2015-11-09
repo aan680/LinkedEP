@@ -1,0 +1,1 @@
+../cpack/xmlrdf/config-available/xmlrdf.pl
