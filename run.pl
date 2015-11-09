@@ -26,6 +26,8 @@ To run the system, do one of the following:
 % relative one ensures that the system remains working when installed on
 % a device that may be mounted on a different location.
 
+% chris showing how git works
+
 add_relative_search_path(Alias, Abs) :-
 	is_absolute_file_name(Abs), !,
 	prolog_load_context(file, Here),
