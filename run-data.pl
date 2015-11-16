@@ -85,9 +85,9 @@ convert_file(XMLFile) :-
 	convert_file(XMLFile, TurtleFile).
 
 convert_file(XMLFile, TurtleFile) :-
-	rdf_retractall(_,_,_,people),
+	%rdf_retractall(_,_,_,people),
 	load_xml(XMLFile),
-	rewrite,
+	%rewrite,
 	rdf_save_turtle(TurtleFile, [graph(people)]).
 
 
