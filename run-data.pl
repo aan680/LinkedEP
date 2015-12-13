@@ -1,10 +1,14 @@
+
 :- module(ahm_convert_people,
 	  [ convert_file/1,		% +XMLFile
+	   convert_file/2,  %edited: added this line
 	    convert_dir/1,		% +Dir
 	    rewrite/0,
 	    rewrite/1,
-	    number_speeches/0
+	    number_speeches/0 %edited:added an argument
 	  ]).
+
+%test
 
 % Setup a search path for finding the data.  Of course this can also
 % use relative or absolute paths, but this is a bit easier to addapt
@@ -36,11 +40,12 @@ user:file_search_path(data, src).
 
 :- use_module(rewrite_data).
 
-number_speeches :-
-	findall(S, rdf(S, rdf:type, lpv:'Speech'), Speeches),
-	forall(nth1(I, Speeches, S),
-	       (   atom_number(A, I),
-		   rdf_assert(S, lpv:speechNo, literal(A)))).
+
+
+p_of(S, T) :-
+	rdf(S, lpv:p, BN),
+	rdf(BN, rdf:value, literal(T)).
+
 
 convert_dir(Dir) :-
         atom_concat(Dir, '/*.xml', Pattern),
@@ -67,7 +72,7 @@ load_xml(File) :-
 			[ dialect(xml),
 %			  unit(record),
 			  prefix(Prefix),
-			  graph(people)
+			  graph('buffer')
 			]).
 
 %%	convert_file(+XMLFile)
@@ -84,11 +89,25 @@ convert_file(XMLFile) :-
 	file_name_extension(Base, ttl, TurtleFile),
 	convert_file(XMLFile, TurtleFile).
 
+number_speeches :-
+        findall(S, rdf(S, rdf:type, lpv:'Speech', 'buffer'), Speeches),
+        forall(nth1(I, Speeches, S),
+               (   atom_number(A, I),
+                   rdf_assert(S, lpv:speechNo, literal(A), 'people'))).
+
+merge_text:-
+	forall(rdf(S, rdf:type, lpv:'Speech', 'buffer'),
+		(	findall(T, p_of(S, T), Text),
+			atomic_list_concat(Text, '\n', AllText),
+			rdf_assert(S, lpv:text, literal(AllText), 'people'))).
+
+
 convert_file(XMLFile, TurtleFile) :-
-	%rdf_retractall(_,_,_,people),
-	load_xml(XMLFile),
-	%rewrite,
-	rdf_save_turtle(TurtleFile, [graph(people)]).
-
-
+        rdf_retractall(_,_,_,'buffer'), %clear buffer
+        load_xml(XMLFile), %store raw RDF in graph buffer
+        number_speeches,
+        merge_text,
+        %rewrite,
+        rdf_save_turtle(TurtleFile, [graph('people')]), %store text and speechNo properties
+        forall(rdf(S,P,O,'buffer'), rdf_assert(S,P,O, 'people')). %store the rest
 
