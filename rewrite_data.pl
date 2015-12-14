@@ -137,7 +137,9 @@ speech_uri_old @@
 	%nth1(3, SubStrings, No),
 	atomic_list_concat(['http://purl.org/linkedpolitics/', Date,
 			    '_', 'Speech', '_', No], N),
-	{N}.
+	{N},
+	{N, dc:date, literal(type('http://www.w3.org/2001/XMLSchema/date', Date))}.
+
 
 speech_uri @@
 { S, rdf:type, lpv:'Speech' },
@@ -150,7 +152,9 @@ speech_uri @@
 	nth1(3, SubStrings, No),
 	atomic_list_concat(['http://purl.org/linkedpolitics/', Date,
 			    '_', 'Speech', '_', No], N),
-	{N}.
+	{N},
+	{N, dc:date, literal(type('http://www.w3.org/2001/XMLSchema/date', Date))}.
+
 
 %4
 agendaitem_uri @@
@@ -163,7 +167,9 @@ agendaitem_uri @@
 	nth1(3, SubStrings, No),
 	atomic_list_concat(['http://purl.org/linkedpolitics/', Date,
 			    '_', 'AgendaItem', '_', No], N),
-	{N}.
+	{N},
+	{N, dc:date, literal(type('http://www.w3.org/2001/XMLSchema/date', Date))}.
+
 
 
 %5
@@ -176,7 +182,8 @@ sessionday_uri @@
 	meta_date(Meta, Date),
 	atomic_list_concat(['http://purl.org/linkedpolitics/', Date,
 			    '_', 'SessionDay'], N),
-	{N}.
+	{N},
+	{N, dc:date, literal(type('http://www.w3.org/2001/XMLSchema/date', Date))}.
 
 
 meta_date(Meta, Date):-
