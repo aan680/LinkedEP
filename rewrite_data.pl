@@ -289,7 +289,6 @@ haspart_sessionday_topic @@
 	<=>
 {A, dcterms:hasPart, B}.
 
-
 %15
 metadata@@
 {A, lpv:stageDirection, B}
@@ -305,6 +304,12 @@ metadata_reify @@ %metadata is now attached to a paragraph
 {S, lpv:unclassifiedMetadata, B}.
 
 %17
+number @@
+{S, lpv:speechNo, B}
+	<=>
+{S, lpv:number, B}.
+
+%18
 remove_p @@
 {S, lpv:p,  _}
         <=> true.
