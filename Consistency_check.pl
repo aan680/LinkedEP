@@ -33,16 +33,4 @@ mixedup_class_or_prop:-
     rdf(_, Prop, _),
     rdf_equal(Prop,Class).
 
-one_day_of_debates(Date, Title, Url):-
-    rdf(SessionDay, dc:date, Date),
-    rdf(SessionDay, dcterms:hasPart, AgendaItem),
-    rdf(SessionDay, lpv:textURI, literal(Url)),
-    rdf(AgendaItem, dc:title, literal(Title)),
-    rdf(AgendaItem, lpv:number, literal(Number)).
-
-rdf(AgendaItem, dcterms:hasPart, Speech),
-    rdf(SessionDay, dcterms:hasPart, AgendaItem),
-    rdf(SessionDay, dc:date, Date).
-    
-    
   
